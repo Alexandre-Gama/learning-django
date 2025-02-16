@@ -26,6 +26,10 @@ def home(request):
     print('Home acessada')
     return HttpResponse('Você está na Home do Site...')
 
+def menu(request):
+    print('Menu acessado')
+    return HttpResponse('Você está no Menu do Site...')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', blog),
