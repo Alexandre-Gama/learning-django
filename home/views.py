@@ -5,5 +5,8 @@ def index(request):
     print('Home acessada')
     return render(
         request,
-        'home/index.html'
+        'home/index.html',
+        context={
+            'text': 'Estamos na home'
+        }
     )
