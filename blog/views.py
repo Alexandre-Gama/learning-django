@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.http import HttpRequest
 from blog.data import posts
+from typing import Any
 
 # Create your views here.
 def index(request):
@@ -18,11 +20,21 @@ def index(request):
     )
 
 # Create your views here.
-def post(request, id):
-    print('Post', id)
+def post(request: HttpRequest, post_id: int):
+    print('Post', post_id)
+
+    found_post: dict[str, Any] | None = None
+    for post in posts:
+        if post['id'] == post_id:
+            found_post = post
+            break
+
+    if found_post is None:
+        raise Exception('Post não existe.')
 
     context={
-            'posts': posts
+            'posts': [found_post],
+            'title': found_post['title'] + ' - '
         }
     
     return render(
