@@ -17,6 +17,20 @@ def index(request):
         context
     )
 
+# Create your views here.
+def post(request, id):
+    print('Post', id)
+
+    context={
+            'posts': posts
+        }
+    
+    return render(
+        request,
+        'blog/index.html',
+        context
+    )
+
 def postagens(request):
     print('Página de postagens do Blog acessada')
 
